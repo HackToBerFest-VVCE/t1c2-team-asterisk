@@ -1,0 +1,140 @@
+{
+  "brand": {
+    "name": "Bharat-VISTAAR",
+    "subtitle": "Smarter Markets. Stronger Farmers.",
+    "tagline": "Know Your Market. Calculate Your Return. Sell With Confidence."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "smartMandi": "Smart Mandi Comparison",
+    "calculator": "Net Return Calculator",
+    "forecasting": "AI Price Forecasting",
+    "trends": "Market Trends & Analytics",
+    "location": "Location Intelligence",
+    "savedReports": "Saved Reports",
+    "alerts": "Alerts",
+    "settings": "Settings"
+  },
+  "topbar": {
+    "searchPlaceholder": "Search crops, mandis, or locations...",
+    "farmerRole": "Farmer",
+    "weatherHumidity": "Humidity",
+    "weatherWind": "Wind",
+    "weatherRain": "Rain Chance"
+  },
+  "hero": {
+    "title": "Better Decisions. Higher Returns.",
+    "subtitle": "AI-powered market intelligence for Indian farmers.",
+    "exploreButton": "Explore Markets",
+    "quickActionsTitle": "Quick Navigation"
+  },
+  "trust": {
+    "line1": "Real Data. Real Markets. Real Impact.",
+    "line2": "Powered by open-source AI and Snowflake",
+    "openSource": "Open Source AI",
+    "snowflake": "Snowflake Analytics",
+    "realData": "Real Market Data",
+    "transparent": "Transparent & Trustworthy",
+    "footerEmpower": "Empowering Farmers | Building a Stronger Tomorrow"
+  },
+  "comparison": {
+    "title": "Smart Mandi Comparison",
+    "subtitle": "Compare prices, distance and net return across multiple mandis",
+    "crop": "Crop",
+    "variety": "Variety",
+    "quantity": "Quantity",
+    "sellingDate": "Selling Date",
+    "quintals": "Quintals",
+    "kg": "Kg",
+    "sortBy": "Sort by",
+    "bestNetReturn": "Best Net Return",
+    "highestPrice": "Highest Modal Price",
+    "nearestDistance": "Nearest Distance",
+    "arrivalVolume": "Arrival Volume",
+    "bestOption": "Best Option",
+    "highestListedPrice": "Highest Listed Price",
+    "modalPrice": "Modal Price",
+    "min": "Min",
+    "max": "Max",
+    "netReturn": "Estimated Net Return",
+    "roadDistance": "Road Route",
+    "viewAll": "View All Mandis",
+    "whyTitle": "Why this market?",
+    "priceDiff": "Price Difference",
+    "verifiedData": "Verified Agmarknet Record"
+  },
+  "calculator": {
+    "title": "Net Return Calculator",
+    "subtitle": "Know your actual earnings after all costs.",
+    "expectedPrice": "Expected Price (₹ / q)",
+    "expensesTitle": "Expenses Breakdown",
+    "transport": "Transport Cost",
+    "loading": "Loading & Unloading",
+    "marketFees": "Market Fees (APMC Cess)",
+    "otherExpenses": "Other Expenses",
+    "addCosts": "+ Add / Adjust Costs",
+    "grossSaleValue": "Gross Sale Value",
+    "totalExpenses": "Total Expenses",
+    "estimatedNetReturn": "Estimated Net Return",
+    "netPerQuintal": "Net Return per Quintal",
+    "breakEvenTitle": "Break-even Price",
+    "breakEvenNotice": "You need at least this price to avoid loss.",
+    "recalculate": "Recalculate",
+    "compareMandis": "Compare Mandis Side-by-Side"
+  },
+  "forecasting": {
+    "title": "AI Price Forecasting",
+    "subtitle": "Predict crop prices with confidence ranges and model insights",
+    "horizon": "Forecast Horizon",
+    "days7": "7 Days",
+    "days14": "14 Days",
+    "days30": "30 Days",
+    "getForecast": "Get Forecast",
+    "forecastBanner": "Forecast Price",
+    "modelMetaTitle": "Model & Training Analytics",
+    "modelName": "Model",
+    "trainingPeriod": "Training Data",
+    "evaluation": "Evaluation (MAPE)",
+    "baseline": "vs. Baseline (MAPE)",
+    "upperRange": "Upper Range (95%)",
+    "lowerRange": "Lower Range (95%)",
+    "disclaimerTitle": "Statistical Estimate Notice",
+    "disclaimerText": "Forecasts are statistical projections based on chronological Agmarknet trends and historical volatility. They are not guaranteed future prices."
+  },
+  "location": {
+    "title": "Location-Based Market Intelligence",
+    "subtitle": "Select your location and explore nearby mandis with transport costs and net returns.",
+    "searchPlaceholder": "Enter town or district (e.g. Hassan, Belur, Mysore)...",
+    "search": "Search",
+    "nearbyTitle": "Nearby Mandis",
+    "roadRoute": "Road route (real distance)",
+    "straightLine": "Straight line (as crow flies)",
+    "transportRateNote": "Transport calculated at standard regional freight rate ₹0.85/km/q"
+  },
+  "trends": {
+    "title": "Market Trends & Arrival Analytics",
+    "priceTrendTab": "Price Trend",
+    "arrivalTab": "Arrival Volume",
+    "comparisonTab": "Market Comparison",
+    "seasonalityTab": "Seasonality",
+    "keyInsightsTitle": "Key Market Insights"
+  },
+  "settings": {
+    "profileTitle": "Profile Information",
+    "name": "Name",
+    "phone": "Phone",
+    "location": "Location",
+    "language": "Language",
+    "preferredCrops": "Preferred Crops",
+    "edit": "Edit",
+    "save": "Save Changes"
+  },
+  "savedReports": {
+    "title": "Saved Reports & Price Alerts",
+    "savedReportsTab": "Saved Reports",
+    "priceAlertsTab": "Price Alerts",
+    "downloadPdf": "Download PDF",
+    "downloadCsv": "Export CSV",
+    "enableAlerts": "Enable SMS/WhatsApp Alerts"
+  }
+}
