@@ -1,7 +1,7 @@
 
 <!-- FarmPrice AI README Banner -->
 <p align="center">
-  <img src="assets/farmprice-ai-banner.png" alt="FarmPrice AI — Predict, Compare, Get Better Prices" width="100%" />
+  <img src="assets/FarmPrice AI Agriculture Logo.png" alt="FarmPrice AI — Predict, Compare, Get Better Prices" width="100%" />
 </p>
 
 # FARMPRICE AI
