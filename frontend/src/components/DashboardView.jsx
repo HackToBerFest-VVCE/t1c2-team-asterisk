@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   GitCompare,
@@ -9,11 +9,57 @@ import {
   CheckCircle2,
   Database,
   Cpu,
-  Shield
+  Shield,
+  Store,
+  CloudSun,
+  Sparkles,
+  ShieldAlert,
+  MessageSquareWarning,
+  Coins
 } from 'lucide-react';
+import FarmWeatherIntelligenceCard from './FarmWeatherIntelligenceCard';
+import { fetchMandiAnalytics } from '../services/api';
 
-export default function DashboardView({ onNavigate, t, dataMode }) {
+export default function DashboardView({
+  onNavigate,
+  t,
+  dataMode,
+  userInfo,
+  weather,
+  onRefreshWeather,
+  onOpenLocationModal,
+  isLoadingWeather = false
+}) {
+  const [mandiStats, setMandiStats] = useState(null);
+
+  useEffect(() => {
+    fetchMandiAnalytics({})
+      .then((res) => setMandiStats(res))
+      .catch((err) => console.error('Mandi stats load error:', err));
+  }, []);
+
   const quickCards = [
+    {
+      id: 'snowflake-explorer',
+      title: 'Snowflake Data Explorer',
+      desc: 'Browse live tables, agronomy benchmarks & 9,800+ APMC records',
+      icon: Database,
+      highlight: true
+    },
+    {
+      id: 'crop-recommendations',
+      title: 'Crop Recommendation & Profit Engine',
+      desc: 'Weather-based suitability, harvest forecasts & net returns',
+      icon: Sparkles,
+      highlight: false
+    },
+
+    {
+      id: 'daily-prices',
+      title: t.nav.dailyPrices || 'Daily Mandi Prices',
+      desc: 'Browse verified AGMARKNET prices',
+      icon: Store,
+    },
     {
       id: 'smart-mandi',
       title: t.nav.smartMandi,
@@ -25,6 +71,24 @@ export default function DashboardView({ onNavigate, t, dataMode }) {
       title: t.nav.calculator,
       desc: 'Know your actual profit',
       icon: Calculator,
+    },
+    {
+      id: 'profit-loss-reports',
+      title: t.nav.profitLossReports || 'Profit & Loss Reports',
+      desc: 'Master P&L statements & freight accounting',
+      icon: Coins,
+    },
+    {
+      id: 'crop-loss-insurance',
+      title: t.nav.cropLossInsurance || 'Crop Loss & Insurance',
+      desc: 'PMFBY 72h damage intimation & schemes',
+      icon: ShieldAlert,
+    },
+    {
+      id: 'complaints',
+      title: t.nav.complaints || 'APMC Complaints Desk',
+      desc: 'Grievance redressal, weighing fraud & tracking',
+      icon: MessageSquareWarning,
     },
     {
       id: 'forecasting',
@@ -39,10 +103,10 @@ export default function DashboardView({ onNavigate, t, dataMode }) {
       icon: LineChart,
     },
     {
-      id: 'location',
-      title: t.nav.location,
-      desc: 'Find best mandis near you',
-      icon: MapPin,
+      id: 'weather-impact',
+      title: t.nav.weatherImpact || 'Weather Context',
+      desc: 'Field conditions & transport risks',
+      icon: CloudSun,
     },
   ];
 
@@ -51,15 +115,90 @@ export default function DashboardView({ onNavigate, t, dataMode }) {
       {/* Hero Banner with Farmer Image */}
       <div className="hero-card">
         <div className="hero-content">
+          {/* Personalized Avatar Welcome Chip */}
+          <div
+            onClick={() => onNavigate('settings')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              padding: '4px 12px 4px 6px',
+              borderRadius: 20,
+              marginBottom: 12,
+              backdropFilter: 'blur(4px)',
+              cursor: 'pointer',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              transition: 'background-color 0.2s ease'
+            }}
+            title="Go to User Profile & Photo Settings"
+          >
+            <div
+              style={{
+                width: 26,
+                height: 26,
+                borderRadius: '50%',
+                backgroundColor: '#10B981',
+                color: '#FFFFFF',
+                overflow: 'hidden',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 11,
+                fontWeight: 700,
+                border: '1.5px solid #FFFFFF'
+              }}
+            >
+              {userInfo?.avatar_url ? (
+                <img
+                  src={userInfo.avatar_url}
+                  alt=""
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              ) : (
+                userInfo?.avatar_initials || 'CP'
+              )}
+            </div>
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#FFFFFF' }}>
+              Welcome back, {userInfo?.name || 'Chethan P'} ({userInfo?.district || 'Hassan'})
+            </span>
+          </div>
+
           <h2 className="hero-heading">{t.hero.title}</h2>
           <p className="hero-desc">{t.hero.subtitle}</p>
-          <button
-            className="hero-cta-btn"
-            onClick={() => onNavigate('smart-mandi')}
-          >
-            <span>{t.hero.exploreButton}</span>
-            <ArrowRight size={16} />
-          </button>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <button
+              className="hero-cta-btn"
+              onClick={() => onNavigate('crop-recommendations')}
+              style={{
+                backgroundColor: '#10B981',
+                borderColor: '#059669',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                boxShadow: '0 4px 14px rgba(16, 185, 129, 0.4)'
+              }}
+            >
+              <Sparkles size={16} />
+              <span>{t.nav.cropRecommendations || '✨ Crop Recommendations & Profit'}</span>
+            </button>
+
+            <button
+              className="hero-cta-btn"
+              onClick={() => onNavigate('smart-mandi')}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                backdropFilter: 'blur(4px)'
+              }}
+            >
+              <span>{t.hero.exploreButton}</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
         <div className="hero-image-box">
           <img
@@ -73,6 +212,17 @@ export default function DashboardView({ onNavigate, t, dataMode }) {
           <div className="hero-image-overlay" />
         </div>
       </div>
+
+      {/* Dedicated Farm Weather Intelligence Card */}
+      <FarmWeatherIntelligenceCard
+        weather={weather}
+        onRefresh={onRefreshWeather}
+        onOpenLocationSearch={onOpenLocationModal}
+        onViewDetailedForecast={() => onNavigate('weather-impact')}
+        isLoading={isLoadingWeather}
+        selectedCrop="Tomato"
+        t={t}
+      />
 
       {/* Quick Action Navigation Cards */}
       <div className="quick-cards-grid">
@@ -94,6 +244,74 @@ export default function DashboardView({ onNavigate, t, dataMode }) {
             </div>
           );
         })}
+      </div>
+
+      {/* Live Karnataka Mandi Price Intelligence Card (Snowflake backed) */}
+      <div
+        style={{
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #DDE5E0',
+          borderRadius: 12,
+          padding: '16px 20px',
+          marginBottom: 18,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Store size={18} color="#059669" />
+            <span style={{ fontSize: 14, fontWeight: 800, color: '#113826' }}>
+              Live Karnataka Mandi Price Registry (AGMARKNET & Snowflake)
+            </span>
+            <span style={{ fontSize: 11, backgroundColor: '#E6F7F0', color: '#059669', padding: '2px 8px', borderRadius: 10, fontWeight: 700 }}>
+              All Karnataka Crops
+            </span>
+          </div>
+          <button
+            onClick={() => onNavigate('daily-prices')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              fontSize: 12,
+              fontWeight: 700,
+              color: '#059669',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <span>Explore All Mandis</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12 }}>
+          <div style={{ backgroundColor: '#FAFDF9', padding: '10px 14px', borderRadius: 8, border: '1px solid #E6ECE8' }}>
+            <div style={{ fontSize: 11, color: '#5A6A60' }}>Active Crops</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#113826' }}>
+              {mandiStats?.total_commodities || '35+'} Commodities
+            </div>
+          </div>
+          <div style={{ backgroundColor: '#FAFDF9', padding: '10px 14px', borderRadius: 8, border: '1px solid #E6ECE8' }}>
+            <div style={{ fontSize: 11, color: '#5A6A60' }}>Mandis Represented</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#113826' }}>
+              {mandiStats?.total_markets || '25+'} APMC Yards
+            </div>
+          </div>
+          <div style={{ backgroundColor: '#FAFDF9', padding: '10px 14px', borderRadius: 8, border: '1px solid #E6ECE8' }}>
+            <div style={{ fontSize: 11, color: '#5A6A60' }}>Latest Observation</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#059669' }}>
+              {mandiStats?.latest_observation_date || '2026-10-24'}
+            </div>
+          </div>
+          <div style={{ backgroundColor: '#FAFDF9', padding: '10px 14px', borderRadius: 8, border: '1px solid #E6ECE8' }}>
+            <div style={{ fontSize: 11, color: '#5A6A60' }}>Daily Arrivals Volume</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: '#113826' }}>
+              {mandiStats?.total_arrival_quantity ? `${Number(mandiStats.total_arrival_quantity).toLocaleString()} t` : '1,840 t'}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Trust & Provenance Bar */}

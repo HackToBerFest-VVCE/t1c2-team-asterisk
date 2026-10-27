@@ -6,12 +6,17 @@ import {
   CheckCircle,
   Calendar,
   AlertTriangle,
-  ArrowRight
+  ArrowRight,
+  Eye,
+  X
 } from 'lucide-react';
-import { downloadReport } from '../services/api';
+import { downloadReport, fetchMarketComparison } from '../services/api';
+import MarketComparisonReport from './MarketComparisonReport';
 
 export default function SavedReportsView({ t }) {
   const [activeTab, setActiveTab] = useState('reports');
+  const [previewReport, setPreviewReport] = useState(null);
+  const [reportLoading, setReportLoading] = useState(false);
   const [alerts, setAlerts] = useState([
     {
       id: 'ALT_1',
@@ -59,6 +64,24 @@ export default function SavedReportsView({ t }) {
     );
   };
 
+  const handleOpenReport = async (report) => {
+    setReportLoading(true);
+    try {
+      const data = await fetchMarketComparison({
+        crop_id: report.cropId || 'CROP_TOMATO',
+        quantity: 50,
+        unit: 'quintals',
+        origin_name: 'Hassan, Karnataka',
+        selling_date: '2026-10-24'
+      });
+      setPreviewReport({ ...data, reportTitle: report.title });
+    } catch (err) {
+      console.warn('Failed to load report comparison:', err);
+    } finally {
+      setReportLoading(false);
+    }
+  };
+
   return (
     <div>
       {/* Title */}
@@ -67,6 +90,34 @@ export default function SavedReportsView({ t }) {
           {t.savedReports.title}
         </h2>
       </div>
+
+      {/* Report Modal Preview (Template) */}
+      {previewReport && (
+        <div style={{ marginBottom: 24, position: 'relative' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 10 }}>
+            <button
+              className="btn-secondary"
+              onClick={() => setPreviewReport(null)}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12 }}
+            >
+              <X size={14} />
+              <span>Close Report</span>
+            </button>
+          </div>
+          <MarketComparisonReport
+            comparisonData={previewReport}
+            cropName={previewReport.crop_name}
+            varietyName={previewReport.variety_name}
+            originName="Hassan, Karnataka"
+            quantity={50}
+            unit="quintals"
+            comparisonDate="2026-10-24"
+            dataMode={previewReport.data_mode || 'LOCAL_DEVELOPMENT_ADAPTER'}
+            onClose={() => setPreviewReport(null)}
+            showActions={true}
+          />
+        </div>
+      )}
 
       {/* Tabs matching Screenshot */}
       <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
@@ -102,7 +153,9 @@ export default function SavedReportsView({ t }) {
                   padding: '14px 18px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: 12
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -131,6 +184,15 @@ export default function SavedReportsView({ t }) {
                 </div>
 
                 <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    className="btn-secondary"
+                    style={{ fontSize: 12, padding: '6px 12px', display: 'inline-flex', alignItems: 'center', gap: 5 }}
+                    onClick={() => handleOpenReport(r)}
+                    disabled={reportLoading}
+                  >
+                    <Eye size={13} />
+                    <span>View Report</span>
+                  </button>
                   <button
                     className="btn-secondary"
                     style={{ fontSize: 12, padding: '6px 12px' }}

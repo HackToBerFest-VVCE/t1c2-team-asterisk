@@ -1,4 +1,5 @@
 import React from 'react';
+import BrandLogo from './BrandLogo';
 import { Sprout, Cpu, Database, CheckCircle, ShieldCheck } from 'lucide-react';
 
 export default function TrustFooter({ t, dataMode }) {
@@ -7,7 +8,7 @@ export default function TrustFooter({ t, dataMode }) {
   return (
     <footer className="trust-footer">
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <Sprout size={18} color="#10B981" />
+        <BrandLogo size={24} priority />
         <span style={{ fontWeight: 700, color: '#FFFFFF', fontSize: 13 }}>
           {t.brand.name}
         </span>

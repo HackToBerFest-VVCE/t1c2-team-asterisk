@@ -1,0 +1,337 @@
+{
+  "MANDI_PRICES": {
+    "exists": true,
+    "columns": [
+      {
+        "name": "OBSERVATION_DATE",
+        "type": "DATE",
+        "nullable": "Y"
+      },
+      {
+        "name": "STATE",
+        "type": "VARCHAR(100)",
+        "nullable": "Y"
+      },
+      {
+        "name": "DISTRICT",
+        "type": "VARCHAR(100)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MARKET",
+        "type": "VARCHAR(200)",
+        "nullable": "Y"
+      },
+      {
+        "name": "COMMODITY",
+        "type": "VARCHAR(200)",
+        "nullable": "Y"
+      },
+      {
+        "name": "VARIETY",
+        "type": "VARCHAR(200)",
+        "nullable": "Y"
+      },
+      {
+        "name": "GRADE",
+        "type": "VARCHAR(100)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MIN_PRICE",
+        "type": "NUMBER(12,2)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MAX_PRICE",
+        "type": "NUMBER(12,2)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MODAL_PRICE",
+        "type": "NUMBER(12,2)",
+        "nullable": "Y"
+      },
+      {
+        "name": "ARRIVAL_QUANTITY",
+        "type": "FLOAT",
+        "nullable": "Y"
+      },
+      {
+        "name": "SOURCE",
+        "type": "VARCHAR(500)",
+        "nullable": "Y"
+      },
+      {
+        "name": "SOURCE_UPDATED_AT",
+        "type": "TIMESTAMP_NTZ(9)",
+        "nullable": "Y"
+      },
+      {
+        "name": "INGESTED_AT",
+        "type": "TIMESTAMP_NTZ(9)",
+        "nullable": "Y"
+      }
+    ],
+    "row_count": 0,
+    "sample_data": []
+  },
+  "REALDATA1": {
+    "exists": true,
+    "columns": [
+      {
+        "name": "C1",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C2",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C3",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C4",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C5",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C6",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C7",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C8",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C9",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C10",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C11",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C12",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      }
+    ],
+    "row_count": 44,
+    "sample_data": [
+      {
+        "C1": "state",
+        "C2": "crop",
+        "C3": "reported_price_rs_per_quintal",
+        "C4": "price_date",
+        "C5": "growing_season_approx",
+        "C6": "typical_sowing_period_approx",
+        "C7": "typical_harvest_period_approx",
+        "C8": "price_source_url",
+        "C9": "coverage_and_caveat",
+        "C10": "price_type",
+        "C11": "seasonal_high_price_months",
+        "C12": "currency_unit_note"
+      },
+      {
+        "C1": "Andhra Pradesh",
+        "C2": "Paddy (Common)",
+        "C3": "2584",
+        "C4": "2026-10-22",
+        "C5": "Kharif; Rabi in irrigated areas",
+        "C6": "Jun-Jul; varies for Rabi",
+        "C7": "Sep-Nov; varies by region",
+        "C8": "https://mandi.findsbest.com/state/andhra-pradesh",
+        "C9": "Average of reported market modal prices; 101 markets",
+        "C10": "Reported state-level average/modal price; not a forecast",
+        "C11": "Not established from one current price; calculate from multi-year monthly history",
+        "C12": "\u20b9 per quintal where source reports quintal; verify commodity unit and grade on market page"
+      },
+      {
+        "C1": "Andhra Pradesh",
+        "C2": "Maize",
+        "C3": "2515",
+        "C4": "2026-10-22",
+        "C5": "Kharif; Rabi in some areas",
+        "C6": "Jun-Jul; Oct-Nov",
+        "C7": "Sep-Nov; Feb-Apr",
+        "C8": "https://mandi.findsbest.com/state/andhra-pradesh",
+        "C9": "Average of reported market modal prices; 43 markets",
+        "C10": "Reported state-level average/modal price; not a forecast",
+        "C11": "Not established from one current price; calculate from multi-year monthly history",
+        "C12": "\u20b9 per quintal where source reports quintal; verify commodity unit and grade on market page"
+      }
+    ]
+  },
+  "REALDATA2": {
+    "exists": true,
+    "columns": [
+      {
+        "name": "C1",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C2",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C3",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C4",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "C5",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      }
+    ],
+    "row_count": 20,
+    "sample_data": [
+      {
+        "C1": "CROP",
+        "C2": "GROWING_SEASON_APPROX",
+        "C3": "TYPICAL_SOWING_PERIOD_APPROX",
+        "C4": "TYPICAL_HARVEST_PERIOD_APPROX",
+        "C5": "MAJOR_GROWING_STATES_EXAMPLES"
+      },
+      {
+        "C1": "Rice/Paddy",
+        "C2": "Kharif; Rabi in irrigated/coastal regions",
+        "C3": "Jun-Jul; varies by state/irrigation",
+        "C4": "Sep-Nov; Rabi harvest varies",
+        "C5": "Andhra Pradesh, Telangana, Tamil Nadu, Karnataka, West Bengal, Odisha, Punjab"
+      },
+      {
+        "C1": "Maize",
+        "C2": "Kharif; Rabi in some regions",
+        "C3": "Jun-Jul; Oct-Nov",
+        "C4": "Sep-Nov; Feb-Apr",
+        "C5": "Andhra Pradesh, Telangana, Karnataka, Maharashtra, Madhya Pradesh, Bihar"
+      }
+    ]
+  },
+  "REALDATA3": {
+    "exists": true,
+    "columns": [
+      {
+        "name": "STATE",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "DISTRICT",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MARKET",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "COMMODITY",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "VARIETY",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "GRADE",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "ARRIVAL_DATE",
+        "type": "VARCHAR(16777216)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MIN_X0020_PRICE",
+        "type": "NUMBER(38,6)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MAX_X0020_PRICE",
+        "type": "NUMBER(38,4)",
+        "nullable": "Y"
+      },
+      {
+        "name": "MODAL_X0020_PRICE",
+        "type": "NUMBER(38,6)",
+        "nullable": "Y"
+      }
+    ],
+    "row_count": 9832,
+    "sample_data": [
+      {
+        "STATE": "Andhra Pradesh",
+        "DISTRICT": "Prakasam",
+        "MARKET": "Santhamaguluru APMC",
+        "COMMODITY": "Maize",
+        "VARIETY": "Hybrid",
+        "GRADE": "FAQ",
+        "ARRIVAL_DATE": "26/10/2026",
+        "MIN_X0020_PRICE": "2500.000000",
+        "MAX_X0020_PRICE": "2580.0000",
+        "MODAL_X0020_PRICE": "2550.000000"
+      },
+      {
+        "STATE": "Keralam",
+        "DISTRICT": "Kozhikode(Calicut)",
+        "MARKET": "Mukkom Market",
+        "COMMODITY": "Ginger(Green)",
+        "VARIETY": "Green Ginger",
+        "GRADE": "FAQ",
+        "ARRIVAL_DATE": "26/10/2026",
+        "MIN_X0020_PRICE": "14500.000000",
+        "MAX_X0020_PRICE": "15500.0000",
+        "MODAL_X0020_PRICE": "15000.000000"
+      },
+      {
+        "STATE": "Keralam",
+        "DISTRICT": "Kozhikode(Calicut)",
+        "MARKET": "Mukkom Market",
+        "COMMODITY": "Apple",
+        "VARIETY": "Other",
+        "GRADE": "Large",
+        "ARRIVAL_DATE": "26/10/2026",
+        "MIN_X0020_PRICE": "14500.000000",
+        "MAX_X0020_PRICE": "15500.0000",
+        "MODAL_X0020_PRICE": "15000.000000"
+      }
+    ]
+  }
+}
